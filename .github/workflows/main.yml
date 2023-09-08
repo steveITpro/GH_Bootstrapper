@@ -1,0 +1,20 @@
+name: Create GitHub Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository_name:
+        description: 'Repository Name'
+        required: true
+
+jobs:
+  create_repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Create and initialize repository
+      run: ./GitHub/create_repo.sh "${{ github.event.inputs.repository_name }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
