@@ -15,9 +15,9 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Grant execute permission for script
-      run: chmod +x ./create_repo.sh
+      run: chmod +x ./GitHub/create_repo.sh
       
     - name: Create and initialize repository
-      run: ./create_repo.sh "${{ github.event.inputs.repository_name }}"
+      run: ./GitHub/create_repo.sh "${{ github.event.inputs.repository_name }}"
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
